@@ -10,7 +10,7 @@ import java.util.List;
 public class Main {
     static int port = 8989;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 //        BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"));
 //        System.out.println(engine.search("бизнес"));
 
@@ -18,15 +18,15 @@ public class Main {
              Socket clientSocket = serverSocket.accept();
              PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
+            while (true) {
+                String word = in.readLine();
+                BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"));
+                List<PageEntry> pageEntries = engine.search(word);
 
-            String word = in.readLine();
-            BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"));
-            List<PageEntry> pageEntries = engine.search(word);
-
-            Gson gson = new GsonBuilder().create();
-            var json = gson.toJson(pageEntries);
-            out.println(json);
-
+                Gson gson = new GsonBuilder().create();
+                var json = gson.toJson(pageEntries);
+                out.println(json);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
