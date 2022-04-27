@@ -18,12 +18,14 @@ public class Main {
              Socket clientSocket = serverSocket.accept();
              PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
              BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
+
+            BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"));
+            Gson gson = new GsonBuilder().create();
+
             while (true) {
                 String word = in.readLine();
-                BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"));
                 List<PageEntry> pageEntries = engine.search(word);
 
-                Gson gson = new GsonBuilder().create();
                 var json = gson.toJson(pageEntries);
                 out.println(json);
             }
