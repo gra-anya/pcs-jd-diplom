@@ -22,7 +22,9 @@ public class BooleanSearchEngine implements SearchEngine {
     @Override
     public List<PageEntry> search(String word) {
         List<PageEntry> pageEntries = indexingWords.get(word);
-        Collections.sort(pageEntries);
+        if (pageEntries != null){
+            Collections.sort(pageEntries);
+        }
         return pageEntries;
     }
 

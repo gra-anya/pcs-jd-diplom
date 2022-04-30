@@ -10,7 +10,7 @@ import java.util.List;
 public class Main {
     static int port = 8989;
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
 //        BooleanSearchEngine engine = new BooleanSearchEngine(new File("pdfs"));
 //        System.out.println(engine.search("бизнес"));
 
