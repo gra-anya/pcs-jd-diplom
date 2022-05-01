@@ -21,7 +21,7 @@ public class BooleanSearchEngine implements SearchEngine {
 
     @Override
     public List<PageEntry> search(String word) {
-        List<PageEntry> pageEntries = indexingWords.get(word);
+        List<PageEntry> pageEntries = indexingWords.get(word.toLowerCase());
         if (pageEntries != null){
             Collections.sort(pageEntries);
         }
