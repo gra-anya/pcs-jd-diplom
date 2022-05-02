@@ -27,6 +27,10 @@ public class Main {
                     String word = in.readLine();
                     List<PageEntry> pageEntries = engine.search(word);
 
+                    if (pageEntries == null){
+                        out.println("Слово не найдено");
+                    }
+
                     var json = gson.toJson(pageEntries);
                     out.println(json);
                 }
